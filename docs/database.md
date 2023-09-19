@@ -35,3 +35,14 @@ remember the three-step guide to making model changes:
 2. Run python manage.py makemigrations to create migrations for those changes
 3. Run python manage.py migrate to apply those changes to the database.
 ```
+
+--- 
+
+Create an admin user for site managers
+
+```
+python manage.py createsuperuser
+```
+
+this way the super user has access to a management dashboard
+
