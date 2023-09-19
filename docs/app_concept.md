@@ -18,4 +18,8 @@ python manage.py startapp polls
 > The idea behind include() is to make it easy to plug-and-play URLs. Since polls are in their own URLconf (polls/urls.py), they can be placed under “/polls/”, or under “/fun_polls/”, or under “/content/polls/”, or any other path root, and the app will still work.
 
 
+---
+
+after creating an app, we need to include this into the installed apps in settings.py 
+
 
