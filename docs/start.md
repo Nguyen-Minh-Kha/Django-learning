@@ -14,3 +14,8 @@ pip install django
 ```bash
 django-admin startproject mysite
 ```
+
+4. go into the project directory then run local dev server
+```
+python manage.py runserver
+```
