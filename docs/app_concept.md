@@ -23,3 +23,15 @@ python manage.py startapp polls
 after creating an app, we need to include this into the installed apps in settings.py 
 
 
+---
+
+```html
+<a href="{% url 'detail' question.id %}">
+```
+this works because python is searching in the polls/url.py to get the url needed
+
+If needed, we can also specify in the url.py the correct path instead of hardcode urls in templates
+
+```python
+path("specifics/<int:question_id>/", views.detail, name="detail"),
+```
