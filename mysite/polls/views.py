@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -79,3 +81,39 @@ def vote(request, question_id):
         selected_choice.votes += 1
         selected_choice.save()
         return HttpResponseRedirect(reverse("polls:results", args=(question_id,)))
+
+def create(request):
+    if request.method == "GET":
+        return render(
+            request,
+            "polls/create.html"
+        )
+    elif request.method == "POST":
+        question = request.POST.get('question_text')
+        if question:
+            time = timezone.now()
+            Question.objects.create(question_text=question, pub_date=time)
+            return HttpResponseRedirect(reverse("polls:index"))
+        else:
+            return render(
+            request,
+            "polls/create.html",
+            {
+                "error_message" : "your question is empty"
+            }
+        )
+
+def addChoice(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    if request.method == "GET":
+        return render(
+            request,
+            "polls/addChoice.html",
+            {
+                "question" : question
+            }
+        )
+    else:
+        choice = request.POST.get('choice_text')
+        question.choice_set.create(choice_text=choice, votes=0)
+        return HttpResponseRedirect(reverse("polls:addChoice", args=(question_id,)))

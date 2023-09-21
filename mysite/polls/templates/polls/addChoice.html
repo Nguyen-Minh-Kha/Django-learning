@@ -1,0 +1,18 @@
+<form action="{% url 'polls:addChoice' question.id %}" method="post">
+  {% csrf_token %}
+  <fieldset>
+    <legend><h1>{{ question.question_text }}</h1></legend>
+    {% if question.choice_set.all %}
+      {% for choice in question.choice_set.all %}
+      <li for="choice{{ forloop.counter }}">{{ choice.choice_text }}</li>
+      {% endfor %}
+    {% endif %}
+    <legend>Enter your choice text</legend>
+    {% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    <input type="text" name="choice_text" value="" />
+  </fieldset>
+  <input type="submit" value="Add choice" />
+</form>
+<a href="{% url 'polls:detail' question.id %}"> go back </a>

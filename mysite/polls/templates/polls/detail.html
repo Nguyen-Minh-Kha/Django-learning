@@ -29,3 +29,5 @@ suitable for use in the {% for %} tag. {% endcomment %}
   <input type="submit" value="Vote" />
 </form>
 <a href="{% url 'polls:addChoice' question.id %}"> add more choice </a>
+<br>
+<a href="{% url 'polls:index' %}"> index </a>

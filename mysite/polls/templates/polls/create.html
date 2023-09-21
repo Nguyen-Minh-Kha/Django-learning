@@ -1,0 +1,11 @@
+<form action="{% url 'polls:create' %}" method="post">
+  {% csrf_token %}
+  <fieldset>
+    <legend><h1>Enter your question text</h1></legend>
+    {% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    <input type="text" name="question_text" value="" />
+  </fieldset>
+  <input type="submit" value="Create" />
+</form>

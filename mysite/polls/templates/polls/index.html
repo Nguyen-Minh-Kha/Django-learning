@@ -4,6 +4,8 @@
         <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
     {% endfor %}
     </ul>
+    <a href="{% url 'polls:create' %}"> add more question </a>
 {% else %}
     <p>No polls are available.</p>
+    <a href="{% url 'polls:create' %}"> create your question </a>
 {% endif %}
